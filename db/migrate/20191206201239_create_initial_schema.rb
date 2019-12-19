@@ -29,7 +29,7 @@ class CreateInitialSchema < ActiveRecord::Migration[6.0]
     # Each row is a single buylist datapoint, from a single vendor.
     # "As of Dec 6, 2019, Card Kingdom was offering $230.00 cash for Gaea's Cradle"
     create_table :buylists do |t|
-      t.references :printings
+      t.belongs_to :printing
 
       t.text :vendor
 

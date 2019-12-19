@@ -1,5 +1,5 @@
 require_relative './sets.rb'
 
 SETS.each do |set|
-  MagicSet.new(name: set)
+  MagicSet.create!(name: set)
 end
