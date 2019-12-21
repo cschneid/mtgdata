@@ -34,7 +34,7 @@ module Import
           }
           printing = Printing.where(printing_args).first
           if printing.nil?
-            printing = Printing.create!(printing_args)
+            printing = Printing.create!(printing_args.dup)
           end
           raise "Missing Printing" if printing.nil?
 
