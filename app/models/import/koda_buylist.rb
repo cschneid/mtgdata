@@ -6,10 +6,10 @@ module Import
       sets = MagicSet.cached
       i = 0
 
-      batch = BatchedWork.new(batch_size: 50) do |batch|
-        puts "\nRunning batch (#{i}-#{i+batch.size})"
-        Buylist.create!(batch)
-        i = i + batch.size
+      batch = BatchedWork.new(batch_size: 50) do |b|
+        puts "\nRunning batch (#{i}-#{i+b.size})"
+        Buylist.create!(b)
+        i = i + b.size
       end
 
       csv = CSV.new(File.read(file), headers: true)
@@ -39,7 +39,7 @@ module Import
 
           batch.add_to_batch(
             {
-              printing: printing.dup,
+              printing_id: printing.id,
               vendor: vendor,
               valid_on: valid_on,
               price: row["Price"],

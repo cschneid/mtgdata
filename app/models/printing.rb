@@ -1,5 +1,6 @@
 class Printing < ApplicationRecord
   belongs_to :magic_set, optional: true
+  has_many :buylists
 
   # Common, Uncommon, Rare, Mythic, Special
   validates :rarity, inclusion: { in: %w[C U R M S L] }
